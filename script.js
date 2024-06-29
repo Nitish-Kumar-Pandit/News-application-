@@ -1,9 +1,9 @@
-const API_KEY="1d3a0eefa97b499d8fbc4ee93eeb40b7";
-const url="https://newsapi.org/v2/everything?q=";
+const API_KEY = "5a13e0b823e34b868452715813cfbe53";
+const url = "https://newsapi.org/v2/everything?q=";
 
-window.addEventListener('load', ()=> fetchNews("India"));
+window.addEventListener('load', () => fetchNews("India"));
 
-async function fetchNews(query){
+async function fetchNews(query) {
     const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data = await res.json();
     bindData(data.articles);
@@ -21,7 +21,7 @@ function bindData(articles) {
     })
 }
 
-function fillDataInCard(cardClone,article){
+function fillDataInCard(cardClone, article) {
     const newsImg = cardClone.querySelector('#news-image');
     const newsTitle = cardClone.querySelector('#news-title');
     const newsSource = cardClone.querySelector('#news-source');
@@ -36,11 +36,13 @@ function fillDataInCard(cardClone,article){
     });
 
     newsSource.innerHTML = `${article.source.name} · ${date}`;
-    cardClone.firstElementChild.addEventListener('click',()=>
-    window.open(article.url, "_blank"))
+    cardClone.firstElementChild.addEventListener('click', () =>
+        window.open(article.url, "_blank"))
 }
+
 let curSelectedNav = null;
-function onNavItemclick(id){
+
+function onNavItemclick(id) {
     fetchNews(id);
     const navItem = document.getElementById(id);
     curSelectedNav?.classList.remove('active');
@@ -51,13 +53,25 @@ function onNavItemclick(id){
 const searchButton = document.getElementById('search-button');
 const searchText = document.getElementById('news-input');
 
-searchButton.addEventListener('click', ()=>{
+searchButton.addEventListener('click', () => {
     const query = searchText.value;
-    if(!query) return;
+    if (!query) return;
     fetchNews(query);
     curSelectedNav?.classList.remove('active');
 })
 
-function reload(){
+function reload() {
     window.location.reload();
 }
+
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", ()=>{
+    hamburger.classList.toggle("active")
+    navLinks.classList.toggle("active")
+})
+hamburger.querySelectorAll(".nav-links").forEach(n=>n.addEventListener("click"),()=>{
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+})
