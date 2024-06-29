@@ -73,13 +73,14 @@ nav{
     height: 32px;
     gap: 8px;
 }
-.new-input{
+.news-input{
     font-family: "Poppins", sans-serif;
     width:320px;
     height: 100%;
     padding-inline: 12px;
     border-radius: 4px;
     border: 2px solid #bbd0e2;
+
 }
 
 .search-button{
@@ -137,4 +138,71 @@ main{
 
 .nav-item.active{
     color: var(--accent-color);
+}
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    background-color: darkgray;
+}
+
+@media (width <= 900px) {
+    .company-logo img{
+        width: 75px;
+    }
+    .news-input{
+        width:170px;
+        height: 100%;
+        padding-inline: 12px;
+        border-radius: 4px;
+        border: 2px solid #bbd0e2;
+    }
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-links{
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #bbd0e2;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-links.active{
+        left: 0;
+    }
+}
+@media (width <= 1200px) {
+    .cards-container{
+        justify-content: center;
+    }
+    .company-logo img{
+        margin-left: 10px;
+    }
+    .nav-links{
+        margin: 10px;
+    }
 }
