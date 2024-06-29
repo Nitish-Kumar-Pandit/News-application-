@@ -181,12 +181,13 @@ main{
         position: fixed;
         left: -100%;
         top: 70px;
-        gap: 0;
+        justify-content: center;
         flex-direction: column;
         background-color: #bbd0e2;
         width: 100%;
         text-align: center;
         transition: 0.3s;
+
     }
     .nav-item{
         margin: 16px 0;
@@ -198,11 +199,9 @@ main{
 @media (width <= 1200px) {
     .cards-container{
         justify-content: center;
+        gap: 20px;
     }
     .company-logo img{
         margin-left: 10px;
-    }
-    .nav-links{
-        margin: 10px;
     }
 }
